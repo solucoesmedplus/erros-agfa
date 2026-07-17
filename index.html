@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f3343">
+  <meta name="description" content="Consulta técnica de códigos de erro dos equipamentos AGFA.">
+  <title>Sistema de Erros AGFA | Med Plus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Menu de equipamentos">
+      <div class="sidebar__brand">
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgywsdWKH6rlDURrDoENalBtkXnhxike5bP4lesilVl-vBhsPrYmIIDLESb8VpR1e6AcRyxgXcyW8snNH4tSyIaJmTizACfOeqQYUjoaXhPE0MmMlHigietjYjKFLpEx5lccR3l10Q5RBwQMNBG8ENz6rAsMubobIyLRZa5DOLpWFtkMEH0Bx8_2LPVZFmb/s16000/logotipo-med-plus2025-1.png"
+          alt="Med Plus"
+          class="sidebar__logo"
+        >
+        <button class="icon-button sidebar__close" id="closeSidebarBtn" type="button" aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="sidebar__divider"></div>
+
+      <nav class="equipment-nav" aria-label="Consulta por equipamento">
+        <button class="nav-home is-active" id="homeBtn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+          <span>Início</span>
+        </button>
+
+        <section class="nav-group">
+          <button class="accordion-trigger" type="button" aria-expanded="true" aria-controls="digitizersMenu">
+            <span class="accordion-trigger__label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm2 4h10M7 11h10M8 16h2m4 0h2"/></svg>
+              Digitalizadores
+            </span>
+            <svg class="accordion-trigger__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-panel is-open" id="digitizersMenu">
+            <button class="equipment-link" type="button" data-equipment="cr10">CR10-X</button>
+            <button class="equipment-link" type="button" data-equipment="cr25_35">CR25/35-X</button>
+            <button class="equipment-link" type="button" data-equipment="cr30">CR30-X</button>
+            <button class="equipment-link" type="button" data-equipment="cr75_85">CR75/85-X</button>
+            <button class="equipment-link" type="button" data-equipment="dxm">DX-M</button>
+          </div>
+        </section>
+
+        <section class="nav-group">
+          <button class="accordion-trigger" type="button" aria-expanded="true" aria-controls="printersMenu">
+            <span class="accordion-trigger__label">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z"/></svg>
+              Impressoras
+            </span>
+            <svg class="accordion-trigger__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-panel is-open" id="printersMenu">
+            <button class="equipment-link" type="button" data-equipment="drystar5302">Drystar 5302</button>
+            <button class="equipment-link" type="button" data-equipment="drystar5503">Drystar 5503</button>
+            <button class="equipment-link" type="button" data-equipment="drystarAxys">Drystar Axys</button>
+          </div>
+        </section>
+      </nav>
+
+      <div class="database-status" id="databaseStatus" role="status" aria-live="polite">
+        <span class="status-dot is-loading" id="statusDot"></span>
+        <span id="databaseStatusText">Carregando base de erros...</span>
+      </div>
+
+      <div class="sidebar__footer">
+        <span>Sistema de Erros AGFA</span>
+        <small>Base técnica em português do Brasil</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="mobile-header">
+        <button class="icon-button" id="openSidebarBtn" type="button" aria-label="Abrir menu de equipamentos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="mobile-header__title">
+          <strong>Sistema de Erros AGFA</strong>
+          <span id="mobileEquipmentName">Selecione um equipamento</span>
+        </div>
+      </header>
+
+      <div class="content-container">
+        <section class="welcome-view" id="welcomeView" aria-labelledby="welcomeTitle">
+          <div class="welcome-card">
+            <div class="welcome-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M11 4h2v10h-2zM11 16h2v2h-2zM12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z"/></svg>
+            </div>
+            <span class="eyebrow">Consulta técnica</span>
+            <h1 id="welcomeTitle">Erros de equipamentos AGFA</h1>
+            <p>Escolha um digitalizador ou uma impressora no menu lateral para pesquisar códigos, identificadores, descrições, causas e soluções.</p>
+            <button class="primary-button" id="welcomeChooseBtn" type="button">
+              Selecionar equipamento
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="query-view" id="queryView" hidden aria-labelledby="equipmentTitle">
+          <header class="query-header">
+            <div>
+              <span class="eyebrow" id="equipmentCategory">Equipamento</span>
+              <h1 id="equipmentTitle">Consulta de erros</h1>
+              <p id="equipmentSubtitle">Pesquise pelo código ou por qualquer termo técnico.</p>
+            </div>
+            <div class="record-total" aria-label="Total de registros">
+              <strong id="equipmentTotal">0</strong>
+              <span>erros na base</span>
+            </div>
+          </header>
+
+          <section class="search-panel" aria-label="Filtros da consulta">
+            <label for="searchInput">Código, identificador ou descrição</label>
+            <div class="search-control">
+              <svg class="search-control__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+              <input
+                id="searchInput"
+                type="search"
+                inputmode="search"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Ex.: 1536, ARC4000, sensor, conexão..."
+              >
+              <button class="clear-search" id="clearSearchBtn" type="button" aria-label="Limpar pesquisa" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="search-help">
+              <span id="resultSummary">Digite um termo ou consulte todos os registros.</span>
+              <button class="secondary-link" id="changeXmlBtn" type="button">Carregar outro XML</button>
+            </div>
+          </section>
+
+          <div class="loading-state" id="loadingState" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            <p>Preparando os registros deste equipamento...</p>
+          </div>
+
+          <section class="results-list" id="resultsList" aria-live="polite" aria-busy="false"></section>
+
+          <section class="empty-state" id="emptyState" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8.5 11h5"/></svg>
+            <h2>Nenhum erro encontrado</h2>
+            <p>Revise o código ou tente pesquisar por uma palavra presente na descrição, causa ou solução.</p>
+          </section>
+
+          <nav class="pagination" id="pagination" aria-label="Paginação dos resultados" hidden>
+            <button class="pagination__button" id="previousPageBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              Anterior
+            </button>
+            <span id="pageIndicator">Página 1 de 1</span>
+            <button class="pagination__button" id="nextPageBtn" type="button">
+              Próxima
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </nav>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="intro-modal" id="introModal" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="intro-modal__backdrop"></div>
+    <div class="intro-modal__panel">
+      <div class="intro-modal__content">
+        <span class="intro-modal__tag">Med Plus • Suporte Técnico</span>
+        <h2 id="introTitle">Sistema de consulta de erros AGFA</h2>
+        <p>Encontre rapidamente códigos de falha, significados, causas prováveis e orientações técnicas em português do Brasil.</p>
+        <div class="intro-modal__features">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Busca por código</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Uso em celular e desktop</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> Base XML consolidada</span>
+        </div>
+        <button class="primary-button primary-button--light" id="startBtn" type="button">
+          Iniciar consulta
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="xml-error-modal" id="xmlErrorModal" role="dialog" aria-modal="true" aria-labelledby="xmlErrorTitle" hidden>
+    <div class="dialog-backdrop"></div>
+    <div class="dialog-panel">
+      <div class="dialog-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.3 3.9 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      </div>
+      <h2 id="xmlErrorTitle">Não foi possível carregar o XML</h2>
+      <p id="xmlErrorMessage">Confirme se o arquivo está na mesma pasta do sistema.</p>
+      <div class="dialog-actions">
+        <button class="primary-button" id="selectXmlBtn" type="button">Selecionar arquivo XML</button>
+        <button class="secondary-button" id="retryXmlBtn" type="button">Tentar novamente</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="xmlFileInput" accept=".xml,text/xml,application/xml" hidden>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
